@@ -3,14 +3,12 @@ import {
   Text,
   StyleSheet,
   View,
-  ScrollView,
   Image,
   TouchableHighlight,
 } from "react-native";
 import TaskProperties from "./TaskProperties";
-import Card from "../shared/Card";
 
-import { Swipeable } from "react-native-gesture-handler";
+import Swipeable from "react-native-gesture-handler/Swipeable";
 
 export default function Task({
   image,

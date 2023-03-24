@@ -1,10 +1,15 @@
 import { useState } from "react";
-import { FlatList, StyleSheet, View, SafeAreaView } from "react-native";
+import {
+  FlatList,
+  StyleSheet,
+  View,
+  SafeAreaView,
+  TouchableWithoutFeedback,
+} from "react-native";
 import Constants from "expo-constants";
 import TaskData from "./TaskData";
 import Task from "./Task";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 export default function TaskList() {
   const [taskList, setTaskList] = useState(TaskData);
@@ -17,7 +22,7 @@ export default function TaskList() {
   return (
     <SafeAreaView style={styles.screen}>
       <FlatList
-        data={TaskData}
+        data={taskList}
         keyExtractor={(taskList) => taskList.id}
         renderItem={({ item }) => (
           <Task
