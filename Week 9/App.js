@@ -1,0 +1,18 @@
+import TaskList from "./app/components/Task/TaskList";
+
+import Task from "./app/components/Task/Task";
+import Testing from "./app/components/shared/Testing";
+import TaskNotes from "./app/components/Task/TaskNotes";
+import AddTask from "./app/components/Task/AddTask";
+import SignInScreen from "./app/components/screens/SignInScreen";
+
+export default function App() {
+  return (
+    // <TaskList />
+    // <Task />
+    // <Testing />
+    // <TaskNotes />
+    // <AddTask />
+    <SignInScreen />
+  );
+}
