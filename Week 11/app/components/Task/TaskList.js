@@ -1,0 +1,82 @@
+import { useContext, useState } from "react";
+import {
+  FlatList,
+  StyleSheet,
+  View,
+  SafeAreaView,
+  TouchableWithoutFeedback,
+} from "react-native";
+import Constants from "expo-constants";
+
+import Task from "./Task";
+import TaskContext from "../../context/TaskContext";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+export default function TaskList() {
+  const { taskList } = useContext(TaskContext);
+  const [tasks, setTasks] = useState([]);
+
+  // const deleteTask = (id) => {
+  //   setTaskList(taskList.filter((task) => task.id !== id));
+  // };
+  return (
+    <SafeAreaView style={styles.screen}>
+      <FlatList
+        data={taskList}
+        keyExtractor={(taskList) => taskList.id}
+        renderItem={({ item }) => (
+          <Task
+            title={item.data.title}
+            description={item.data.description}
+            image={item.image}
+            onPress={() => console.log("Task Selected", item)}
+            renderRightActions={() => (
+              <View style={styles.deleteContainer}>
+                <TouchableWithoutFeedback onPress={() => deleteTask(item.id)}>
+                  <MaterialCommunityIcons
+                    name="trash-can"
+                    size={35}
+                    color="black"
+                  />
+                </TouchableWithoutFeedback>
+              </View>
+            )}
+          />
+        )}
+      />
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  screen: {
+    paddingTop: Constants.StatusBarHeight,
+    flex: 1,
+  },
+  container: {
+    padding: 20,
+    paddingTop: 100,
+  },
+  secondContainer: {
+    padding: 20,
+    paddingTop: 50,
+  },
+  image: {
+    width: "100%",
+    height: 200,
+  },
+  title: {
+    fontWeight: "bold",
+    marginBottom: 7,
+  },
+  description: {
+    color: "#fff",
+    fontWeight: "bold",
+  },
+  deleteContainer: {
+    backgroundColor: "red",
+    width: 70,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
